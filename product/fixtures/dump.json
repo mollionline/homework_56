@@ -1,0 +1,92 @@
+[
+{
+    "model": "product.category",
+    "pk": 1,
+    "fields": {
+        "category": "Напитки",
+        "description": null
+    }
+},
+{
+    "model": "product.category",
+    "pk": 2,
+    "fields": {
+        "category": "Сладости",
+        "description": null
+    }
+},
+{
+    "model": "product.category",
+    "pk": 3,
+    "fields": {
+        "category": "Аксессуары",
+        "description": "Серьги, шапки, шляпы, перчатки, ремни"
+    }
+},
+{
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+        "product": "Coca Cola",
+        "description": null,
+        "category": 1,
+        "created_at": "2021-12-25T15:19:04.446Z",
+        "price": "350.000",
+        "image": "https://images.unsplash.com/photo-1640398097288-c2cd41fef8f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+    }
+},
+{
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+        "product": "Торт",
+        "description": "Для доступа к данным через модель используется специальный объект-менеджер. Он является атрибутом класса Articles (и других классов моделей), называется objects и содержит методы для выполнения запрос",
+        "category": 2,
+        "created_at": "2021-12-25T15:49:53.347Z",
+        "price": "5000.000",
+        "image": "https://images.unsplash.com/photo-1640403413914-a112e78e4803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+    }
+},
+{
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+        "product": "Шляпа",
+        "description": "",
+        "category": 3,
+        "created_at": "2021-12-25T16:06:35.611Z",
+        "price": "500.000",
+        "image": "https://images.unsplash.com/photo-1640302991860-0abf242d858c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+    }
+},
+{
+    "model": "product.product",
+    "pk": 4,
+    "fields": {
+        "product": "Шляпа",
+        "description": "Шляпа мягкая с волнами",
+        "category": 3,
+        "created_at": "2021-12-25T16:08:24.261Z",
+        "price": "1200.000",
+        "image": "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8JUQxJTg4JUQwJUJCJUQxJThGJUQwJUJGJUQwJUIwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$uW3mJRRLmqtsZbd1BDqUet$M/s2qAAzw36ter5FrwZp589dDg4sljP38gha6mOWgeY=",
+        "last_login": "2021-12-25T15:09:34.483Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "auezova.90@mail.ru",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2021-12-25T15:08:58.421Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

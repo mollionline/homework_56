@@ -2,10 +2,9 @@
     <div class="container">
         <form action="{% url 'product_add' %}" method="POST">
             {% csrf_token %}
-            <button type="button" class="btn btn-info"><a style="color: white; text-decoration: none"
-                                                          href="{% url 'product_list' %}">Back to tasks</a></button>
+            <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться в продукты</a>
             <div class="col md-6">
-                <h5 class="create_text">Create a new product:</h5>
+                <h5 class="create_text">Добавьте новый продукт:</h5>
             </div>
             <div class="card col-md-6">
                 <label for="product">Продукт</label>
@@ -14,7 +13,7 @@
                 <input type="text" id='product' name="product" required/>
             </div>
             <div class="card col-md-6">
-                <label for="description">Description</label>
+                <label for="description">Описание</label>
             </div>
             <div class="card col-md-6">
                 <textarea cols="30" rows="10" type="text" id='description' name="description"></textarea>
@@ -42,7 +41,7 @@
                 <input type="text" id='image' name="image" required/>
             </div>
             <div class="card col-md-6">
-                <input type="submit" value="Add product"/><br/>
+                <input type="submit" value="Добавить продукт"/><br/>
             </div>
         </form>
     </div>

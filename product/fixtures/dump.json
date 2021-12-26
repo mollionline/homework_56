@@ -24,6 +24,14 @@
     }
 },
 {
+    "model": "product.category",
+    "pk": 4,
+    "fields": {
+        "category": "Юбки",
+        "description": ""
+    }
+},
+{
     "model": "product.product",
     "pk": 1,
     "fields": {
@@ -31,7 +39,7 @@
         "description": null,
         "category": 1,
         "created_at": "2021-12-25T15:19:04.446Z",
-        "price": "350.000",
+        "price": "350",
         "image": "https://images.unsplash.com/photo-1640398097288-c2cd41fef8f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
     }
 },
@@ -43,7 +51,7 @@
         "description": "Для доступа к данным через модель используется специальный объект-менеджер. Он является атрибутом класса Articles (и других классов моделей), называется objects и содержит методы для выполнения запрос",
         "category": 2,
         "created_at": "2021-12-25T15:49:53.347Z",
-        "price": "5000.000",
+        "price": "5000",
         "image": "https://images.unsplash.com/photo-1640403413914-a112e78e4803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
     }
 },
@@ -55,7 +63,7 @@
         "description": "",
         "category": 3,
         "created_at": "2021-12-25T16:06:35.611Z",
-        "price": "500.000",
+        "price": "500",
         "image": "https://images.unsplash.com/photo-1640302991860-0abf242d858c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
     }
 },
@@ -67,8 +75,44 @@
         "description": "Шляпа мягкая с волнами",
         "category": 3,
         "created_at": "2021-12-25T16:08:24.261Z",
-        "price": "1200.000",
+        "price": "1200",
         "image": "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8JUQxJTg4JUQwJUJCJUQxJThGJUQwJUJGJUQwJUIwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+    }
+},
+{
+    "model": "product.product",
+    "pk": 5,
+    "fields": {
+        "product": "Булочка",
+        "description": "",
+        "category": 2,
+        "created_at": "2021-12-26T14:59:46.745Z",
+        "price": "200",
+        "image": "https://media.istockphoto.com/photos/sweet-lunch-picture-id503245267?b=1&k=20&m=503245267&s=170667a&w=0&h=NyQFm5OBbYre32kDdRSYue39byhsQd8X4cV8FUHHgdk="
+    }
+},
+{
+    "model": "product.product",
+    "pk": 6,
+    "fields": {
+        "product": "Пончики",
+        "description": "",
+        "category": 2,
+        "created_at": "2021-12-26T15:03:51.733Z",
+        "price": "300",
+        "image": "https://media.istockphoto.com/photos/hanukkah-picture-id530720925?b=1&k=20&m=530720925&s=170667a&w=0&h=URWVixs_gLXIRM8_eop_l0AHACDbBZWC2u6A3rAbIY0="
+    }
+},
+{
+    "model": "product.product",
+    "pk": 7,
+    "fields": {
+        "product": "Рулетка",
+        "description": "",
+        "category": 2,
+        "created_at": "2021-12-26T15:38:08.689Z",
+        "price": "1000",
+        "image": "https://media.istockphoto.com/photos/roll-with-poppy-seeds-picture-id141095305?b=1&k=20&m=141095305&s=170667a&w=0&h=pR0tG3iomFo6sBkgKp_u0BwJ4Zgi9NW52-ibkbM3PC0="
     }
 },
 {
@@ -76,7 +120,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$320000$uW3mJRRLmqtsZbd1BDqUet$M/s2qAAzw36ter5FrwZp589dDg4sljP38gha6mOWgeY=",
-        "last_login": "2021-12-25T15:09:34.483Z",
+        "last_login": "2021-12-26T09:18:35.522Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",

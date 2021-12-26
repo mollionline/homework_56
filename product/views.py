@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from product.models import Product, Category
 
-def product_view(request):
+def products_view(request):
     products = Product.objects.all()
     context = {
         'products': products

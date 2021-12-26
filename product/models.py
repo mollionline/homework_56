@@ -7,7 +7,7 @@ class Category(models.Model):
     description = models.TextField(max_length=500, null=True, blank=True)
 
     def __str__(self):
-        return '{}. {}'.format(self.pk, self.category)
+        return '{}'.format(self.category)
 
 
 class Product(models.Model):

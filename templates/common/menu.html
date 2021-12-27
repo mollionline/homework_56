@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid justify-content-between">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <a class="navbar-brand" href="{% url 'product_list' %}">
                 <img src="{% static 'img/logo_bonton.jpeg' %}" alt="" width="100" height="50"
                      class="d-inline-block align-text-top">
@@ -10,13 +10,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/' %} active {% endif %}" aria-current="page" href="{% url 'product_list' %}">Продукты</a>
+                    <a class="nav-link {% if request.path == '/' %} active {% endif %}" aria-current="page"
+                       href="{% url 'product_list' %}">Продукты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/categories/add/' %} active {% endif %}" href="{% url 'category_add' %}">Добавить категорию</a>
+                    <a class="nav-link {% if request.path == '/categories/' %} active {% endif %}"
+                       href="{% url 'categories_list' %}">Категории</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/products/add/' %} active {% endif %}" href="{% url 'product_add' %}">Добавить продукт</a>
+                    <a class="nav-link {% if request.path == '/categories/add/' %} active {% endif %}"
+                       href="{% url 'category_add' %}">Добавить категорию</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/products/add/' %} active {% endif %}"
+                       href="{% url 'product_add' %}">Добавить продукт</a>
                 </li>
             </ul>
         </div>

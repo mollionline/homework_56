@@ -3,32 +3,32 @@
     "model": "product.category",
     "pk": 1,
     "fields": {
-        "category": "Напитки",
-        "description": null
+        "category": "Газировки",
+        "description": ""
     }
 },
 {
     "model": "product.category",
     "pk": 2,
     "fields": {
-        "category": "Сладости",
-        "description": null
+        "category": "Торты",
+        "description": "Украшение любого стола "
     }
 },
 {
     "model": "product.category",
     "pk": 3,
     "fields": {
-        "category": "Аксессуары",
-        "description": "Серьги, шапки, шляпы, перчатки, ремни"
+        "category": "Мучное",
+        "description": "Мучные не сладкие продукты"
     }
 },
 {
     "model": "product.category",
-    "pk": 4,
+    "pk": 5,
     "fields": {
-        "category": "Юбки",
-        "description": ""
+        "category": "Салаты",
+        "description": "Простые и вкусные салаты от лучших поваров"
     }
 },
 {
@@ -36,19 +36,19 @@
     "pk": 1,
     "fields": {
         "product": "Coca Cola",
-        "description": null,
+        "description": "Магия момента",
         "category": 1,
         "created_at": "2021-12-25T15:19:04.446Z",
-        "price": "350",
-        "image": "https://images.unsplash.com/photo-1640398097288-c2cd41fef8f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+        "price": "2",
+        "image": "https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29sYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
     }
 },
 {
     "model": "product.product",
     "pk": 2,
     "fields": {
-        "product": "Торт",
-        "description": "Для доступа к данным через модель используется специальный объект-менеджер. Он является атрибутом класса Articles (и других классов моделей), называется objects и содержит методы для выполнения запрос",
+        "product": "Дуэт",
+        "description": "ДУЭТ – наш фирменный торт. Он родился как ремейк на тему  детских воспоминаний о вкуснейшем бабушкином торте, выполненном из качественнейших ( как и все домашнее) продуктов по современной технологии. В нем нежнейшие шоколадные бисквиты чередуются с белым сливочным бисквитом , которые прослоены сметано-творожным кремом, тающим во рту. Тонкий слой мягкого натурального шоколада придает ему еще большую нежность и насыщенность.",
         "category": 2,
         "created_at": "2021-12-25T15:49:53.347Z",
         "price": "5000",
@@ -59,24 +59,24 @@
     "model": "product.product",
     "pk": 3,
     "fields": {
-        "product": "Шляпа",
-        "description": "",
-        "category": 3,
+        "product": "Торт вишневый",
+        "description": "Изысканный вишневый торт",
+        "category": 2,
         "created_at": "2021-12-25T16:06:35.611Z",
         "price": "500",
-        "image": "https://images.unsplash.com/photo-1640302991860-0abf242d858c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+        "image": "https://media.istockphoto.com/photos/white-cream-icing-cake-with-fruits-on-blue-background-picture-id1256142980?b=1&k=20&m=1256142980&s=170667a&w=0&h=poluHC9z_DRg7NljT_67QixHLxaLj0VgbhoGNhJYiUU="
     }
 },
 {
     "model": "product.product",
     "pk": 4,
     "fields": {
-        "product": "Шляпа",
-        "description": "Шляпа мягкая с волнами",
-        "category": 3,
+        "product": "Медовый",
+        "description": "Вкус как у бабушки дома",
+        "category": 2,
         "created_at": "2021-12-25T16:08:24.261Z",
         "price": "1200",
-        "image": "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8JUQxJTg4JUQwJUJCJUQxJThGJUQwJUJGJUQwJUIwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        "image": "https://media.istockphoto.com/photos/homemade-cake-with-lemon-cup-of-tea-picture-id1129370076?b=1&k=20&m=1129370076&s=170667a&w=0&h=D5g9BJ5QiIRzSv506dZ-WE-MR3i0vqmGvLAsgICR8Go="
     }
 },
 {
@@ -113,6 +113,18 @@
         "created_at": "2021-12-26T15:38:08.689Z",
         "price": "1000",
         "image": "https://media.istockphoto.com/photos/roll-with-poppy-seeds-picture-id141095305?b=1&k=20&m=141095305&s=170667a&w=0&h=pR0tG3iomFo6sBkgKp_u0BwJ4Zgi9NW52-ibkbM3PC0="
+    }
+},
+{
+    "model": "product.product",
+    "pk": 9,
+    "fields": {
+        "product": "Круассан",
+        "description": "",
+        "category": 3,
+        "created_at": "2021-12-27T15:22:44.514Z",
+        "price": "5",
+        "image": "https://images.unsplash.com/photo-1602505938589-3a2c8bc49181?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8JUQwJUJBJUQxJTgwJUQxJTgzJUQwJUIwJUQxJTgxJUQxJTgxJUQwJUIwJUQwJUJEfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
     }
 },
 {

@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 # Create your views here.
@@ -24,6 +24,33 @@ def product_view(request, pk):
     return render(request=request,
                   template_name='product_detail.html',
                   context=context)
+
+
+def product_edit_view(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+        categories = Category.objects.all()
+        if request.method == 'POST':
+            product.product = request.POST.get('product')
+            product.description = request.POST.get('description')
+            product.category = Category.objects.get(pk=request.POST.get('category'))
+            product.price = request.POST.get('price')
+            product.image = request.POST.get('image')
+            product.save()
+            return HttpResponseRedirect('/')
+        else:
+            return render(request, 'product_edit.html', {'product': product, 'categories': categories})
+    except Product.DoesNotExist:
+        return HttpResponseNotFound("<h2>Product not found</h2>")
+
+
+def product_delete_view(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+        product.delete()
+        return HttpResponseRedirect('/')
+    except Product.DoesNotExist:
+        return HttpResponseNotFound("<h2>Product not found</h2>")
 
 
 def category_add_view(request):

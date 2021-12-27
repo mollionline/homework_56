@@ -20,14 +20,16 @@
                                 {% endif %}
                             </div>
                             <p class="card-text">Стоимость: {{ product.price }} $</p>
-                            <p class="card-text"><small class="text-muted">Дата добавления: {{ product.created_at|date:'d.m.Y' }}</small>
+                            <p class="card-text"><small class="text-muted">Дата
+                                добавления: {{ product.created_at|date:'d.m.Y' }}</small>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container">
-                <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться в продукты</a>
+                <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться
+                    в продукты</a>
             </div>
         </form>
     </div>

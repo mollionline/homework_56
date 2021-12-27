@@ -23,6 +23,10 @@
                             <p class="card-text"><small class="text-muted">Дата
                                 добавления: {{ product.created_at|date:'d.m.Y' }}</small>
                             </p>
+                            <a style="color: white; text-decoration: none" class="btn btn-success"
+                               href='{% url 'product_edit' product.pk %}'>Редактировать</a>
+                            <a style="color: white; text-decoration: none" class="btn btn-danger"
+                               href='{% url 'product_delete' product.pk %}'>Удалить</a>
                         </div>
                     </div>
                 </div>

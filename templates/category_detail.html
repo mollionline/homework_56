@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Наименование: {{ category.category }}</h5>
+                            <div style="display: flex; flex-wrap: wrap;">
+                                {% if category.description %}
+                                    <textarea cols="50" rows="10" class="card-text"
+                                              readonly>Описание: {{ category.description }}</textarea>
+                                {% else %}
+                                    <p class="card-text">Описание категории не задано</p>
+                                {% endif %}
+                            </div>
+                            <a style="color: white; text-decoration: none" class="btn btn-dark"
+                               href="{% url 'categories_list' %}">Вернуться
+                                категории</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

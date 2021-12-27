@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.db import IntegrityError
 
 # Create your views here.
 from product.models import Product, Category
@@ -59,14 +60,17 @@ def category_add_view(request):
     elif request.method == 'POST':
         try:
             category = request.POST.get('category')
-            description = request.POST.get('description')
-            added_cat = Category.objects.create(
-                category=category,
-                description=description
-            )
-            return HttpResponseRedirect('/categories/')
-        except BaseException:
-            return HttpResponseRedirect("<h2>Категория существует/h2>")
+            if category == '':
+                return render(request, template_name='cat_err.html')
+            else:
+                description = request.POST.get('description')
+                added_cat = Category.objects.create(
+                    category=category,
+                    description=description
+                )
+                return HttpResponseRedirect('/categories/')
+        except IntegrityError:
+            return render(request, template_name='cat_err.html')
 
 
 def categories_view(request):
@@ -120,17 +124,23 @@ def product_add_view(request):
     if request.method == 'GET':
         return render(request=request, template_name='product_add_page.html', context=context)
     elif request.method == 'POST':
-        product = request.POST.get('product')
-        description = request.POST.get('description')
-        category = request.POST.get('category')
-        price = request.POST.get('price')
-        image = request.POST.get('image')
-        added_product = Product.objects.create(
-            product=product,
-            description=description,
-            category=Category.objects.get(pk=category),
-            price=price,
-            image=image
-        )
-        url = reverse('product_detail', kwargs={'pk': added_product.pk})
-        return HttpResponseRedirect(url)
+        try:
+            product = request.POST.get('product')
+            description = request.POST.get('description')
+            category = request.POST.get('category')
+            price = request.POST.get('price')
+            image = request.POST.get('image')
+            if product == '' or image == '' or not 'https' in image:
+                return render(request, 'prod_err.html')
+            else:
+                added_product = Product.objects.create(
+                    product=product,
+                    description=description,
+                    category=Category.objects.get(pk=category),
+                    price=price,
+                    image=image
+                )
+                url = reverse('product_detail', kwargs={'pk': added_product.pk})
+                return HttpResponseRedirect(url)
+        except Exception:
+            return render(request, 'prod_err.html')

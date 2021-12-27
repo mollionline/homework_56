@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+    <div class="container">
+
+        <table class="table caption-top">
+            <h3>Список категории: </h3>
+            <thead>
+            <tr>
+                <th scope="col">Категория</th>
+                <th scope="col">Редактировать</th>
+                <th scope="col">Удалить</th>
+                <th scope="col">Детальная информация</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.category }}</td>
+                    <td>
+                        <a class="btn btn-success"
+                           href='{% url 'category_edit' category.pk %}'>Edit</a>
+                    </td>
+                    <td>
+                        <a style="color: white; text-decoration: none" class="btn btn-danger"
+                           href='{% url 'category_delete' category.pk %}'>Delete</a>
+                    </td>
+                    <td>
+                        <a style="color: white; text-decoration: none" class="btn btn-dark"
+                           href='{% url 'category_detail' category.pk %}'>Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

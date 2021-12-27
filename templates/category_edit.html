@@ -16,9 +16,9 @@
                     <label for="description">Описание</label>
                 </div>
                 <div class="card col-md-3">
-                    <textarea cols="30" rows="10" type="text" id='description' name="description"
-                            {% if category.description %} placeholder="{{ category.description }}" {% else %}
-                              placeholder="Описание не задано" {% endif %}></textarea>
+                    <textarea cols="30" rows="10" type="text" id='description'
+                              name="description">{% if category.description %} {{ category.description }} {% else %}
+                        Описание не задано {% endif %}</textarea>
                 </div>
 
             </div>

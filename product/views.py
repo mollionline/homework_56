@@ -8,7 +8,7 @@ from product.models import Product, Category
 
 
 def products_view(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(remains__gt=0).order_by('category').order_by('product')
     context = {
         'products': products
     }

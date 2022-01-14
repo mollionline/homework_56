@@ -20,6 +20,7 @@
                                 {% endif %}
                             </div>
                             <p class="card-text">Стоимость: {{ product.price }} $</p>
+                            <p class="card-text">Остаток: {{ product.remains }} шт.</p>
                             <p class="card-text"><small class="text-muted">Дата
                                 добавления: {{ product.created_at|date:'d.m.Y' }}</small>
                             </p>

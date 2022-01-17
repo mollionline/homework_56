@@ -1,0 +1,12 @@
+{% csrf_token %}
+<a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'categories_list' %}">Вернуться
+    в категории</a>
+<div class="card col-md-6">
+    <label for="category">Категория</label>
+</div>
+<div class="card col-md-6">
+    <input type="text" id='category' name="category" value="{{ form.category.value }}"/>
+</div>
+<div class="card col-md-6">
+    <input type="submit" value={{ button_text }}><br/>
+</div>

@@ -5,6 +5,7 @@ from django.db import IntegrityError
 
 # Create your views here.
 from product.models import Product, Category
+from product.forms import ProductForm, CategoryForm
 
 
 def products_view(request):
@@ -28,49 +29,68 @@ def product_view(request, pk):
 
 
 def product_edit_view(request, pk):
-    try:
-        product = Product.objects.get(pk=pk)
-        categories = Category.objects.all()
-        if request.method == 'POST':
-            product.product = request.POST.get('product')
-            product.description = request.POST.get('description')
+    product = get_object_or_404(Product, pk=pk)
+    categories = Category.objects.all()
+    if request.method == 'POST':
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            product.product = form.cleaned_data['product']
+            product.description = form.cleaned_data['description']
             product.category = Category.objects.get(pk=request.POST.get('category'))
-            product.price = request.POST.get('price')
-            product.image = request.POST.get('image')
-            product.save()
+            product.price = form.cleaned_data['price']
+            product.remains = form.cleaned_data['remains']
+            product.save(update_fields=['product', 'description', 'category', 'price', 'remains'])
             return HttpResponseRedirect('/')
         else:
-            return render(request, 'product_edit.html', {'product': product, 'categories': categories})
-    except Product.DoesNotExist:
-        return HttpResponseNotFound("<h2>Product not found</h2>")
+            return render(request, 'product_edit.html', context={
+                'product': product,
+                'form': form,
+                'errors': form.errors,
+                'categories': Category.objects.all()
+            })
+    elif request.method == 'GET':
+        form = ProductForm(initial={
+            'product': product.product,
+            'description': product.description,
+            'category': product.category,
+            'price': product.price,
+            'remains': product.remains
+        })
+        return render(request, 'product_edit.html', context={
+            'product': product,
+            'form': form,
+            'errors': form.errors,
+            'categories': categories
+        })
 
 
 def product_delete_view(request, pk):
-    try:
-        product = Product.objects.get(pk=pk)
-        product.delete()
-        return HttpResponseRedirect('/')
-    except Product.DoesNotExist:
-        return HttpResponseNotFound("<h2>Product not found</h2>")
+    product = get_object_or_404(Product, pk=pk)
+    product.delete()
+    return HttpResponseRedirect('/')
 
 
 def category_add_view(request):
     if request.method == 'GET':
         return render(request, 'category_add_page.html')
     elif request.method == 'POST':
-        try:
-            category = request.POST.get('category')
-            if category == '':
-                return render(request, template_name='cat_err.html')
-            else:
-                description = request.POST.get('description')
-                added_cat = Category.objects.create(
-                    category=category,
-                    description=description
-                )
-                return HttpResponseRedirect('/categories/')
-        except IntegrityError:
-            return render(request, template_name='cat_err.html')
+        form = CategoryForm(data=request.POST)
+        if form.is_valid():
+            category, is_not_new = Category.objects.get_or_create(
+                category=form.cleaned_data.get('category'),
+            )
+            url = reverse('category_detail', kwargs={
+                'pk': category.pk
+            })
+            return HttpResponseRedirect(url)
+        return render(
+            request=request,
+            template_name='category_add_page.html',
+            context={
+                'errors': form.errors,
+                'form': form
+            }
+        )
 
 
 def categories_view(request):
@@ -94,26 +114,34 @@ def category_view(request, pk):
 
 
 def category_edit_view(request, pk):
-    try:
-        category = Category.objects.get(pk=pk)
-        if request.method == 'POST':
-            category.category = request.POST.get('category')
-            category.description = request.POST.get('description')
-            category.save()
-            return HttpResponseRedirect('/categories/')
+    category = get_object_or_404(Category, pk=pk)
+    if request.method == 'POST':
+        form = CategoryForm(data=request.POST)
+        if form.is_valid():
+            category.category = form.cleaned_data['category']
+            category.save(update_fields=['category'])
+            return HttpResponseRedirect('/')
         else:
-            return render(request, 'category_edit.html', {'category': category})
-    except Category.DoesNotExist:
-        return HttpResponseNotFound("<h2>Category not found</h2>")
+            return render(request, 'category_edit.html', context={
+                'category': category,
+                'form': form,
+                'errors': form.errors
+            })
+    elif request.method == 'GET':
+        form = CategoryForm(initial={
+            'category': category.category
+        })
+        return render(request, 'category_edit.html', context={
+            'category': category,
+            'form': form,
+            'errors': form.errors
+        })
 
 
 def category_delete_view(request, pk):
-    try:
-        category = Category.objects.get(pk=pk)
-        category.delete()
-        return HttpResponseRedirect('/categories/')
-    except Category.DoesNotExist:
-        return HttpResponseNotFound("<h2>Category not found</h2>")
+    category = get_object_or_404(Category, pk=pk)
+    category.delete()
+    return HttpResponseRedirect('/')
 
 
 def product_add_view(request):
@@ -124,23 +152,25 @@ def product_add_view(request):
     if request.method == 'GET':
         return render(request=request, template_name='product_add_page.html', context=context)
     elif request.method == 'POST':
-        try:
-            product = request.POST.get('product')
-            description = request.POST.get('description')
-            category = request.POST.get('category')
-            price = request.POST.get('price')
-            image = request.POST.get('image')
-            if product == '' or image == '' or not 'https' in image:
-                return render(request, 'prod_err.html')
-            else:
-                added_product = Product.objects.create(
-                    product=product,
-                    description=description,
-                    category=Category.objects.get(pk=category),
-                    price=price,
-                    image=image
-                )
-                url = reverse('product_detail', kwargs={'pk': added_product.pk})
-                return HttpResponseRedirect(url)
-        except Exception:
-            return render(request, 'prod_err.html')
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            product, is_not_new = Product.objects.get_or_create(
+                product=form.cleaned_data.get('product'),
+                description=form.cleaned_data.get('description'),
+                category=Category.objects.get(pk=request.POST.get('category')),
+                price=form.cleaned_data.get('price'),
+                remains=form.cleaned_data.get('remains')
+            )
+            url = reverse('product_detail', kwargs={
+                'pk': product.pk
+            })
+            return HttpResponseRedirect(url)
+        return render(
+            request=request,
+            template_name='product_add_page.html',
+            context={
+                'categories': Category.objects.all(),
+                'errors': form.errors,
+                'form': form
+            }
+        )

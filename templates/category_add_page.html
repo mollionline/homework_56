@@ -1,27 +1,11 @@
 {% extends 'base.html' %} {% block content %}
+    <div class="col md-6">
+        <h5 class="create_text">Добавьте новую категорию:</h5>
+    </div>
     <div class="container">
         <form action="{% url 'category_add' %}" method="POST">
             {% csrf_token %}
-            <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться
-                в продукты</a>
-            <div class="col md-6">
-                <h5 class="create_text">Добавьте новую категорию:</h5>
-            </div>
-            <div class="card col-md-6">
-                <label for="category">Категория</label>
-            </div>
-            <div class="card col-md-6">
-                <input type="text" id='category' name="category"/>
-            </div>
-            <div class="card col-md-6">
-                <label for="description">Описание</label>
-            </div>
-            <div class="card col-md-6">
-                <textarea cols="30" rows="10" type="text" id='description' name="description"></textarea>
-            </div>
-            <div class="card col-md-6">
-                <input type="submit" value="Добавить категорию"/><br/>
-            </div>
+            {% include 'form_category.html' with button_text='Создать' %}
         </form>
     </div>
 {% endblock %}

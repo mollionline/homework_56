@@ -1,20 +1,17 @@
 {% extends 'base.html' %} {% block content %}
     <div class="container">
         <h3>Добро пожаловать в магазин Bon Ton</h3>
-        <div class="row row-cols-2 align-items-start">
+        <div class="row row-cols-1 align-items-start">
             {% for product in products %}
                 <div class="col py-3">
                     <div class="card" style="border: 1px solid black;">
                         <div class="row">
-                            <div class="col-md-4 clearfix">
-                                <img style="width: 380px; height: 200px" src="{{ product.image }}"
-                                     class="img-fluid rounded-start img-thumbnail" alt="...">
-                            </div>
                             <div class="col-md-4 px-3 text-truncate">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ product.product }}</h5>
                                     <p class="card-text">{{ product.category }}</p>
-                                    <p>Стоимость: {{ product.price }} $</p>
+                                    {% load l10n %}
+                                    <p>Стоимость: {{ product.price|unlocalize }} $</p>
                                     <a href="{% url 'product_detail' product.pk %}" class="btn btn-dark">Подробнее</a>
                                 </div>
                             </div>

@@ -1,61 +1,11 @@
 {% extends 'base.html' %} {% block content %}
+    <div class="col md-6">
+        <h5 class="create_text">Редактировать продукт:</h5>
+    </div>
     <div class="container">
-        <form method="POST">
+        <form action="{% url 'product_edit' product.pk %}" method="POST">
             {% csrf_token %}
-            <div class="container">
-                <div class="col md-3">
-                    <h6>Редактировать продукт:</h6>
-                </div>
-                <div class="card col-md-6">
-                    <label for="product">Продукт</label>
-                </div>
-                <div class="card col-md-6">
-                    <input type="text" id='product' name="product" value="{{ product.product }}" required/>
-                </div>
-                <div class="card col-md-6">
-                    <label for="description">Описание</label>
-                </div>
-                <div class="card col-md-6">
-                    <textarea cols="30" rows="10" type="text" id='description'
-                              name="description">{% if product.description %} {{ product.description }} {% else %}
-                        Описание не задано {% endif %}</textarea>
-                </div>
-                <div class="card col-md-6">
-                    <label for="category_old" style="color: red">Ранее заданная категория</label>
-                </div>
-                <div class="card col-md-6">
-                    <p for="category_old" name="category" style="color: red">{{ product.category }}</p>
-                </div>
-                <div class="card col-md-6">
-                    <label for="category">Категория</label>
-                </div>
-                <div class="card col-md-6">
-                    <select name="category" id='category'>
-                        {% for category in categories %}
-                            <option type="text" value="{{ category.pk }}">{{ category.category }}</option>
-                        {% endfor %}
-                    </select>
-
-                </div>
-                <div class="card col-md-6">
-                    <label for="price">Стоимость</label>
-                </div>
-                <div class="card col-md-6">
-                    <input type="text" id='price' name="price" value="{{ product.price }}" required/>
-                </div>
-                <div class="card col-md-6">
-                    <label for="image">Изображение</label>
-                </div>
-                <div class="card col-md-6">
-                    <input type="text" id='image' name="image" value="{{ product.image }}" required/>
-                </div>
-                <div class="card col-md-6">
-                    <input type="submit" value="Редактировать!"/><br/>
-                </div>
-            </div>
-            <div class="container">
-                <a class="btn btn-dark" href="{% url 'product_list' %}">Вернуться в продукты</a>
-            </div>
+            {% include 'form_product.html' with button_text='Редактировать' %}
         </form>
     </div>
 {% endblock %}

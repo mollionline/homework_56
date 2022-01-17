@@ -4,15 +4,15 @@ from product.models import Category, Product
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'category', 'description']
+    list_display = ['id', 'category']
     list_filter = ['category']
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['id', 'product', 'description', 'created_at', 'price', 'image', 'remains']
+    list_display = ['id', 'product', 'description', 'created_at', 'price', 'remains']
     list_filter = ['product']
     search_fields = ['product', 'created_at']
-    fields = ['product', 'category', 'description', 'created_at', 'price', 'image', 'remains']
+    fields = ['product', 'category', 'description', 'created_at', 'price', 'remains']
     readonly_fields = ['created_at']
 
 

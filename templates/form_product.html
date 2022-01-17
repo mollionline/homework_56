@@ -1,0 +1,45 @@
+{% csrf_token %}
+<a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться
+    в продукты</a>
+<div class="card col-md-6">
+    <label for="product">Продукт</label>
+</div>
+<div class="card col-md-6">
+    <input type="text" id='product' name="product" value="{{ form.product.value }}"/>
+</div>
+<div class="card col-md-6">
+    <label for="description">Описание</label>
+</div>
+<div class="card col-md-6">
+    <textarea cols="30" rows="10" type="text" id='description' name="description">{{ form.description.value }}</textarea>
+</div>
+<div class="card col-md-6">
+    <label for="category">Категория</label>
+</div>
+<div class="card col-md-6">
+    <select name="category" id="category">
+        {% for category in categories %}
+            {% if category.category == product.categoty %}
+            <option selected value="{{ category.pk }}">{{ category.category }}</option>
+            {% else %}
+            <option value="{{ category.pk }}">{{ category.category }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<div class="card col-md-6">
+    <label for="price">Цена</label>
+</div>
+{% load l10n %}
+<div class="card col-md-6">
+    <input type="text" id='price' name="price" value="{{ form.price.value|unlocalize }}"/>
+</div>
+<div class="card col-md-6">
+    <label for="remains">Количество</label>
+</div>
+<div class="card col-md-6">
+    <input type="number" id='remains' name="remains" value="{{ form.remains.value }}"/>
+</div>
+<div class="card col-md-6">
+    <input type="submit" value={{ button_text }}><br/>
+</div>

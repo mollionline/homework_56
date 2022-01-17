@@ -1,35 +1,11 @@
 {% extends 'base.html' %} {% block content %}
+    <div class="col md-6">
+        <h5 class="create_text">Добавьте новую категорию:</h5>
+    </div>
     <div class="container">
-        <form method="POST">
+        <form action="{% url 'category_edit' category.pk %}" method="POST">
             {% csrf_token %}
-            <div class="container">
-                <div class="col md-3">
-                    <h6>Редактировать категорию:</h6>
-                </div>
-                <div class="card col-md-3">
-                    <label for="category">Категория</label>
-                </div>
-                <div class="card col-md-3">
-                    <input type="text" id='category' name="category" value="{{ category.category }}" required/>
-                </div>
-                <div class="card col-md-3">
-                    <label for="description">Описание</label>
-                </div>
-                <div class="card col-md-3">
-                    <textarea cols="30" rows="10" type="text" id='description'
-                              name="description">{% if category.description %} {{ category.description }} {% else %}
-                        Описание не задано {% endif %}</textarea>
-                </div>
-
-            </div>
-            <div class="container">
-                <div class="card col-md-3">
-                    <input type="submit" value="Edit!"/><br/>
-                </div>
-                <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'categories_list' %}">Вернуться
-                    категории</a>
-            </div>
-
+            {% include 'form_category.html' with button_text='Редактировать' %}
         </form>
     </div>
 {% endblock %}

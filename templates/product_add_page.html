@@ -1,49 +1,11 @@
 {% extends 'base.html' %} {% block content %}
+    <div class="col md-6">
+        <h5 class="create_text">Добавьте новый продукт:</h5>
+    </div>
     <div class="container">
         <form action="{% url 'product_add' %}" method="POST">
             {% csrf_token %}
-            <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться
-                в продукты</a>
-            <div class="col md-6">
-                <h5 class="create_text">Добавьте новый продукт:</h5>
-            </div>
-            <div class="card col-md-6">
-                <label for="product">Продукт</label>
-            </div>
-            <div class="card col-md-6">
-                <input type="text" id='product' name="product"/>
-            </div>
-            <div class="card col-md-6">
-                <label for="description">Описание</label>
-            </div>
-            <div class="card col-md-6">
-                <textarea cols="30" rows="10" type="text" id='description' name="description"></textarea>
-            </div>
-            <div class="card col-md-6">
-                <label for="category">Категория</label>
-            </div>
-            <div class="card col-md-6">
-                <select name="category">
-                    {% for category in categories %}
-                        <option value="{{ category.pk }}">{{ category.category }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="card col-md-6">
-                <label for="price">Цена</label>
-            </div>
-            <div class="card col-md-6">
-                <input type="text" id='price' name="price"/>
-            </div>
-            <div class="card col-md-6">
-                <label for="image">Изображение</label>
-            </div>
-            <div class="card col-md-6">
-                <input type="text" id='image' name="image"/>
-            </div>
-            <div class="card col-md-6">
-                <input type="submit" value="Добавить продукт"/><br/>
-            </div>
+            {% include 'form_product.html' with button_text='Создать' %}
         </form>
     </div>
 {% endblock %}

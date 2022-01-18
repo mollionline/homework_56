@@ -1,14 +1,11 @@
 {% extends 'base.html' %} {% block content %}
     <div class="container">
-        <h3>Добро пожаловать в магазин Bon Ton</h3>
+        <h4>Результаты поиска</h4>
+        <a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться
+            в продукты</a>
+        {% if object_list %}
+            {% for product in object_list %}
 
-        <form action="{% url 'search_result' %}" method="GET">
-            <label id="q">Поиск товара по наименованию</label>
-            <input name="q" type="text" placeholder="Search ...">
-        </form>
-        <h5>Список продуктов в наличий</h5>
-        <div class="row row-cols-1 align-items-start">
-            {% for product in products %}
                 <div class="col py-3">
                     <div class="card" style="border: 1px solid black;">
                         <div class="row">
@@ -27,7 +24,10 @@
                         </div>
                     </div>
                 </div>
+
             {% endfor %}
-        </div>
+        {% else %}
+            <p> Продукт отстуствует </p>
+        {% endif %}
     </div>
 {% endblock %}

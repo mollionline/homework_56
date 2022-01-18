@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.views.generic import ListView, TemplateView
+from django.db.models import Q
 
 # Create your views here.
 from product.models import Product, Category
@@ -179,3 +181,15 @@ def product_add_view(request):
                 'form': form
             }
         )
+
+
+class SearchResultView(ListView):
+    model = Product
+    template_name = 'search_results.html'
+
+    def get_queryset(self, queryset=None):
+        query = self.request.GET.get('q')
+        object_list = Product.objects.filter(
+            Q(product__icontains=query)
+        )
+        return object_list

@@ -7,7 +7,6 @@
             <tr>
                 <th scope="col">Категория</th>
                 <th scope="col">Редактировать</th>
-                <th scope="col">Удалить</th>
                 <th scope="col">Детальная информация</th>
                 <th scope="col">Добавить категорию</th>
             </tr>
@@ -15,14 +14,11 @@
             <tbody>
             {% for category in categories %}
                 <tr>
-                    <td>{{ category.category }}</td>
+                    <td><a class="btn btn-link"
+                           href="{% url 'cat_products_list' category.category %}">{{ category.category }}</a></td>
                     <td>
                         <a class="btn btn-success"
                            href='{% url 'category_edit' category.pk %}'>Редактировать</a>
-                    </td>
-                    <td>
-                        <a style="color: white; text-decoration: none" class="btn btn-danger"
-                           href='{% url 'category_delete' category.pk %}'>Удалить</a>
                     </td>
                     <td>
                         <a style="color: white; text-decoration: none" class="btn btn-dark"
@@ -34,6 +30,7 @@
                     </td>
                 </tr>
             {% endfor %}
+
             </tbody>
         </table>
     </div>

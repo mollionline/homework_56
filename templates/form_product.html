@@ -19,7 +19,7 @@
 <div class="card col-md-6">
     <select name="category" id="category">
         {% for category in categories %}
-            {% if category.category == product.categoty %}
+            {% if category == form.category.value %}
             <option selected value="{{ category.pk }}">{{ category.category }}</option>
             {% else %}
             <option value="{{ category.pk }}">{{ category.category }}</option>

@@ -1,7 +1,6 @@
-from django.http import HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.db import IntegrityError
 
 # Create your views here.
 from product.models import Product, Category
@@ -9,7 +8,7 @@ from product.forms import ProductForm, CategoryForm
 
 
 def products_view(request):
-    products = Product.objects.filter(remains__gt=0).order_by('category').order_by('product')
+    products = Product.objects.filter(remains__gt=0).order_by('product')
     context = {
         'products': products
     }
@@ -60,7 +59,7 @@ def product_edit_view(request, pk):
             'product': product,
             'form': form,
             'errors': form.errors,
-            'categories': categories
+            'categories': Category.objects.all()
         })
 
 
@@ -120,7 +119,7 @@ def category_edit_view(request, pk):
         if form.is_valid():
             category.category = form.cleaned_data['category']
             category.save(update_fields=['category'])
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/categories/')
         else:
             return render(request, 'category_edit.html', context={
                 'category': category,
@@ -142,6 +141,12 @@ def category_delete_view(request, pk):
     category = get_object_or_404(Category, pk=pk)
     category.delete()
     return HttpResponseRedirect('/')
+
+
+def cat_products_view(request, category):
+    category_name = Category.objects.get(category=category)
+    products = Product.objects.filter(category=category_name.pk).order_by('product')
+    return render(request, 'category_products_list.html', context={'products': products, 'category': category_name})
 
 
 def product_add_view(request):

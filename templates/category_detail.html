@@ -6,7 +6,9 @@
                 <div class="row g-0">
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Наименование: {{ category.category }}</h5>
+                            <h5 class="card-title">Наименование: <a class="btn btn-link"
+                                                                    href="{% url 'cat_products_list' category.category %}">{{ category.category }}</a>
+                            </h5>
                             <div style="display: flex; flex-wrap: wrap;">
                                 {% if category.description %}
                                     <textarea cols="50" rows="10" class="card-text"
@@ -15,6 +17,11 @@
                                     <p class="card-text">Описание категории не задано</p>
                                 {% endif %}
                             </div>
+                            <a type="button" class="btn btn-danger" data-bs-toggle="modal"
+                               data-bs-target="#exampleModal">
+                                Удалить
+                            </a>
+
                             <a style="color: white; text-decoration: none" class="btn btn-dark"
                                href="{% url 'categories_list' %}">Вернуться
                                 категории</a>
@@ -24,4 +31,5 @@
             </div>
         </form>
     </div>
+    {% include 'common/delete_modal_category.html' with deleted_object=category %}
 {% endblock %}

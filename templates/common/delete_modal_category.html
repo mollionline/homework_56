@@ -7,11 +7,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Вы действительно хотите удалить продукт: <br> {{ deleted_object.product }} ?</p>
+                <p>Вы действительно хотите удалить категорию: <br> {{ deleted_object.category }} ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form method="POST" action="{% url 'product_delete' deleted_object.pk %}">
+                <form method="POST" action="{% url 'category_delete' deleted_object.pk %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>

@@ -1,7 +1,10 @@
 {% extends 'base.html' %} {% block content %}
     <div class="container">
         <h3>Добро пожаловать в магазин Bon Ton</h3>
-        <h5>Список продуктов в наличий</h5>
+        <a style="color: white; text-decoration: none" class="btn btn-dark"
+           href="{% url 'categories_list' %}">Вернуться
+            категории</a>
+        <h4 style="color: green">Список продуктов категории: {{ category.category }}</h4>
         <div class="row row-cols-1 align-items-start">
             {% for product in products %}
                 <div class="col py-3">
@@ -10,9 +13,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ product.product }}</h5>
-                                    <p>Наименование категории: <a class="card-text btn btn-link"
-                                                                  href="{% url 'cat_products_list' product.category %}">{{ product.category }}</a>
-                                    </p>
+                                    <p>Наименование категории: <a class="card-text btn btn-link" href="{% url 'cat_products_list' product.category %}">{{ product.category }}</a></p>
                                     {% load l10n %}
                                     <p>Стоимость: {{ product.price|unlocalize }} $</p>
                                     <p>Остаток: {{ product.remains }} шт.</p>

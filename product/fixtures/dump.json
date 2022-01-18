@@ -1,130 +1,181 @@
 [
 {
     "model": "product.category",
-    "pk": 1,
-    "fields": {
-        "category": "Газировки",
-        "description": ""
-    }
-},
-{
-    "model": "product.category",
-    "pk": 2,
-    "fields": {
-        "category": "Торты",
-        "description": "Украшение любого стола "
-    }
-},
-{
-    "model": "product.category",
     "pk": 3,
     "fields": {
-        "category": "Мучное",
-        "description": "Мучные не сладкие продукты"
+        "category": "Разное"
     }
 },
 {
     "model": "product.category",
     "pk": 5,
     "fields": {
-        "category": "Салаты",
-        "description": "Простые и вкусные салаты от лучших поваров"
+        "category": "Салаты"
     }
 },
 {
-    "model": "product.product",
-    "pk": 1,
-    "fields": {
-        "product": "Coca Cola",
-        "description": "Магия момента",
-        "category": 1,
-        "created_at": "2021-12-25T15:19:04.446Z",
-        "price": "2",
-        "image": "https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29sYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-    }
-},
-{
-    "model": "product.product",
-    "pk": 2,
-    "fields": {
-        "product": "Дуэт",
-        "description": "ДУЭТ – наш фирменный торт. Он родился как ремейк на тему  детских воспоминаний о вкуснейшем бабушкином торте, выполненном из качественнейших ( как и все домашнее) продуктов по современной технологии. В нем нежнейшие шоколадные бисквиты чередуются с белым сливочным бисквитом , которые прослоены сметано-творожным кремом, тающим во рту. Тонкий слой мягкого натурального шоколада придает ему еще большую нежность и насыщенность.",
-        "category": 2,
-        "created_at": "2021-12-25T15:49:53.347Z",
-        "price": "5000",
-        "image": "https://images.unsplash.com/photo-1640403413914-a112e78e4803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-    }
-},
-{
-    "model": "product.product",
-    "pk": 3,
-    "fields": {
-        "product": "Торт вишневый",
-        "description": "Изысканный вишневый торт",
-        "category": 2,
-        "created_at": "2021-12-25T16:06:35.611Z",
-        "price": "500",
-        "image": "https://media.istockphoto.com/photos/white-cream-icing-cake-with-fruits-on-blue-background-picture-id1256142980?b=1&k=20&m=1256142980&s=170667a&w=0&h=poluHC9z_DRg7NljT_67QixHLxaLj0VgbhoGNhJYiUU="
-    }
-},
-{
-    "model": "product.product",
-    "pk": 4,
-    "fields": {
-        "product": "Медовый",
-        "description": "Вкус как у бабушки дома",
-        "category": 2,
-        "created_at": "2021-12-25T16:08:24.261Z",
-        "price": "1200",
-        "image": "https://media.istockphoto.com/photos/homemade-cake-with-lemon-cup-of-tea-picture-id1129370076?b=1&k=20&m=1129370076&s=170667a&w=0&h=D5g9BJ5QiIRzSv506dZ-WE-MR3i0vqmGvLAsgICR8Go="
-    }
-},
-{
-    "model": "product.product",
-    "pk": 5,
-    "fields": {
-        "product": "Булочка",
-        "description": "",
-        "category": 2,
-        "created_at": "2021-12-26T14:59:46.745Z",
-        "price": "200",
-        "image": "https://media.istockphoto.com/photos/sweet-lunch-picture-id503245267?b=1&k=20&m=503245267&s=170667a&w=0&h=NyQFm5OBbYre32kDdRSYue39byhsQd8X4cV8FUHHgdk="
-    }
-},
-{
-    "model": "product.product",
+    "model": "product.category",
     "pk": 6,
     "fields": {
-        "product": "Пончики",
-        "description": "",
-        "category": 2,
-        "created_at": "2021-12-26T15:03:51.733Z",
-        "price": "300",
-        "image": "https://media.istockphoto.com/photos/hanukkah-picture-id530720925?b=1&k=20&m=530720925&s=170667a&w=0&h=URWVixs_gLXIRM8_eop_l0AHACDbBZWC2u6A3rAbIY0="
+        "category": "Мучное"
     }
 },
 {
-    "model": "product.product",
+    "model": "product.category",
     "pk": 7,
     "fields": {
-        "product": "Рулетка",
-        "description": "",
-        "category": 2,
-        "created_at": "2021-12-26T15:38:08.689Z",
-        "price": "1000",
-        "image": "https://media.istockphoto.com/photos/roll-with-poppy-seeds-picture-id141095305?b=1&k=20&m=141095305&s=170667a&w=0&h=pR0tG3iomFo6sBkgKp_u0BwJ4Zgi9NW52-ibkbM3PC0="
+        "category": "Сладости"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 11,
+    "fields": {
+        "category": "Торты"
     }
 },
 {
     "model": "product.product",
-    "pk": 9,
+    "pk": 19,
     "fields": {
         "product": "Круассан",
-        "description": "",
+        "description": "Круассан с сыром",
+        "category": 6,
+        "created_at": "2022-01-14T14:38:14.861Z",
+        "price": "200.00",
+        "remains": 5
+    }
+},
+{
+    "model": "product.product",
+    "pk": 22,
+    "fields": {
+        "product": "Шоколад Казахстан",
+        "description": "с Казахстана",
+        "category": 7,
+        "created_at": "2022-01-14T16:27:52.536Z",
+        "price": "100.00",
+        "remains": 8
+    }
+},
+{
+    "model": "product.product",
+    "pk": 44,
+    "fields": {
+        "product": "Банан",
+        "description": "Банан",
         "category": 3,
-        "created_at": "2021-12-27T15:22:44.514Z",
-        "price": "5",
-        "image": "https://images.unsplash.com/photo-1602505938589-3a2c8bc49181?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8JUQwJUJBJUQxJTgwJUQxJTgzJUQwJUIwJUQxJTgxJUQxJTgxJUQwJUIwJUQwJUJEfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        "created_at": "2022-01-17T09:23:02.648Z",
+        "price": "700.00",
+        "remains": 9
+    }
+},
+{
+    "model": "product.product",
+    "pk": 45,
+    "fields": {
+        "product": "Арбуз",
+        "description": "С Узбекистана",
+        "category": 3,
+        "created_at": "2022-01-17T09:24:53.287Z",
+        "price": "200.00",
+        "remains": 4
+    }
+},
+{
+    "model": "product.product",
+    "pk": 46,
+    "fields": {
+        "product": "Рулетка",
+        "description": "Нежная рулетка с шоколадом",
+        "category": 7,
+        "created_at": "2022-01-17T13:43:24.224Z",
+        "price": "1000.00",
+        "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 47,
+    "fields": {
+        "product": "Торт вишневый",
+        "description": "Нежный вишневый торт",
+        "category": 11,
+        "created_at": "2022-01-17T13:46:44.351Z",
+        "price": "5000.00",
+        "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 48,
+    "fields": {
+        "product": "Торт Напалеон",
+        "description": "С кремом",
+        "category": 11,
+        "created_at": "2022-01-17T13:47:24.994Z",
+        "price": "3000.00",
+        "remains": 4
+    }
+},
+{
+    "model": "product.product",
+    "pk": 49,
+    "fields": {
+        "product": "Пончики",
+        "description": "Пончики",
+        "category": 6,
+        "created_at": "2022-01-17T13:50:46.865Z",
+        "price": "200.00",
+        "remains": 6
+    }
+},
+{
+    "model": "product.product",
+    "pk": 50,
+    "fields": {
+        "product": "Оливье",
+        "description": "Салат как дома",
+        "category": 5,
+        "created_at": "2022-01-17T13:51:25.660Z",
+        "price": "1000.00",
+        "remains": 5
+    }
+},
+{
+    "model": "product.product",
+    "pk": 51,
+    "fields": {
+        "product": "Пончики с засыпкой",
+        "description": "Розовые",
+        "category": 6,
+        "created_at": "2022-01-17T13:52:11.188Z",
+        "price": "300.00",
+        "remains": 0
+    }
+},
+{
+    "model": "product.product",
+    "pk": 52,
+    "fields": {
+        "product": "Цезарь",
+        "description": "с курицей",
+        "category": 5,
+        "created_at": "2022-01-17T13:52:51.755Z",
+        "price": "1000.00",
+        "remains": 0
+    }
+},
+{
+    "model": "product.product",
+    "pk": 53,
+    "fields": {
+        "product": "Булочка",
+        "description": "Булочка",
+        "category": 6,
+        "created_at": "2022-01-17T13:53:44.873Z",
+        "price": "200.00",
+        "remains": 3
     }
 },
 {
@@ -132,7 +183,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$320000$uW3mJRRLmqtsZbd1BDqUet$M/s2qAAzw36ter5FrwZp589dDg4sljP38gha6mOWgeY=",
-        "last_login": "2021-12-26T09:18:35.522Z",
+        "last_login": "2022-01-17T13:48:00.443Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",

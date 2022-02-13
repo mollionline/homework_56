@@ -3,9 +3,9 @@
         <h5 class="create_text">Добавьте новую категорию:</h5>
     </div>
     <div class="container">
-        <form action="{% url 'category_add' %}" method="POST">
+        <form action="{% url 'category_edit' category.pk %}" method="POST">
             {% csrf_token %}
-            {% include 'form_category.html' with button_text='Создать' %}
+            {% include 'partial/category/form_category.html' with button_text='Редактировать' %}
         </form>
     </div>
 {% endblock %}

@@ -1,0 +1,65 @@
+{% csrf_token %}
+<a style="color: white; text-decoration: none" class="btn btn-dark" href="{% url 'product_list' %}">Вернуться
+    в продукты</a>
+<div class="card col-md-6">
+    <label for="product">Продукт</label>
+</div>
+<div class="card col-md-6">
+    <input class="form-control {% if form.product.errors %} is-invalid {% endif %}" type="text" id='product'
+           name="product" value="{{ form.product.value|default:'' }}"/>
+    {% for error in form.product.errors %}
+        <p class="invalid-feedback">{{ error }}</p>
+    {% endfor %}
+</div>
+
+<div class="card col-md-6">
+    <label for="description">Описание</label>
+</div>
+<div class="card col-md-6">
+    <textarea class="form-control {% if form.description.errors %} is-invalid {% endif %}" cols="30" rows="10"
+              type="text" id='description' name="description">{{ form.description.value|default:'' }}</textarea>
+    {% for error in form.description.errors %}
+        <p class="invalid-feedback">{{ error }}</p>
+    {% endfor %}
+</div>
+
+<div class="card col-md-6">
+    <label for="category">Категория</label>
+</div>
+<div class="card col-md-6">
+    <select name="category" id="category">
+        {% for category in form.category.field.queryset %}
+            {% if category == form.category.value %}
+                <option selected value="{{ category.pk }}">{{ category.category }}</option>
+            {% else %}
+                <option value="{{ category.pk }}">{{ category.category }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<div class="card col-md-6">
+    <label for="price">Цена</label>
+</div>
+{% load l10n %}
+<div class="card col-md-6">
+    <input class="form-control {% if form.price.errors %} is-invalid {% endif %}" type="text" id='price' name="price"
+           value="{{ form.price.value|default:''|unlocalize }}"/>
+    {% for error in form.price.errors %}
+        <p class="invalid-feedback">{{ error }}</p>
+    {% endfor %}
+</div>
+
+<div class="card col-md-6">
+    <label for="remains">Количество</label>
+</div>
+<div class="card col-md-6">
+    <input class="form-control {% if form.remains.errors %} is-invalid {% endif %}" type="number" id='remains'
+           name="remains" value="{{ form.remains.value }}"/>
+    {% for error in form.remains.errors %}
+        <p class="invalid-feedback">{{ error }}</p>
+    {% endfor %}
+</div>
+
+<div class="card col-md-6">
+    <input type="submit" value={{ button_text }}><br/>
+</div>

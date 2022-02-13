@@ -60,30 +60,6 @@
 },
 {
     "model": "product.product",
-    "pk": 44,
-    "fields": {
-        "product": "Банан",
-        "description": "Банан",
-        "category": 3,
-        "created_at": "2022-01-17T09:23:02.648Z",
-        "price": "700.00",
-        "remains": 9
-    }
-},
-{
-    "model": "product.product",
-    "pk": 45,
-    "fields": {
-        "product": "Арбуз",
-        "description": "С Узбекистана",
-        "category": 3,
-        "created_at": "2022-01-17T09:24:53.287Z",
-        "price": "200.00",
-        "remains": 4
-    }
-},
-{
-    "model": "product.product",
     "pk": 46,
     "fields": {
         "product": "Рулетка",
@@ -168,14 +144,98 @@
 },
 {
     "model": "product.product",
-    "pk": 53,
+    "pk": 56,
     "fields": {
-        "product": "Булочка",
-        "description": "Булочка",
-        "category": 6,
-        "created_at": "2022-01-17T13:53:44.873Z",
+        "product": "Булочка99",
+        "description": "",
+        "category": 3,
+        "created_at": "2022-02-11T13:16:48.897Z",
         "price": "200.00",
         "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 57,
+    "fields": {
+        "product": "Булочка",
+        "description": "",
+        "category": 3,
+        "created_at": "2022-02-11T13:45:51.079Z",
+        "price": "200.00",
+        "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 58,
+    "fields": {
+        "product": "Торт вишневый",
+        "description": "",
+        "category": 7,
+        "created_at": "2022-02-11T13:46:58.422Z",
+        "price": "200.00",
+        "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 59,
+    "fields": {
+        "product": "Торт вишневый888",
+        "description": "",
+        "category": 3,
+        "created_at": "2022-02-11T14:05:49.166Z",
+        "price": "200.00",
+        "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 60,
+    "fields": {
+        "product": "Арбуз",
+        "description": "",
+        "category": 3,
+        "created_at": "2022-02-11T14:43:35.556Z",
+        "price": "200.00",
+        "remains": 1
+    }
+},
+{
+    "model": "product.product",
+    "pk": 61,
+    "fields": {
+        "product": "Булочка88",
+        "description": "",
+        "category": 3,
+        "created_at": "2022-02-11T14:44:02.171Z",
+        "price": "200.00",
+        "remains": 0
+    }
+},
+{
+    "model": "product.product",
+    "pk": 62,
+    "fields": {
+        "product": "Новый товар 1",
+        "description": "",
+        "category": 6,
+        "created_at": "2022-02-11T14:47:37.472Z",
+        "price": "200.00",
+        "remains": 3
+    }
+},
+{
+    "model": "product.product",
+    "pk": 65,
+    "fields": {
+        "product": "Аjfjfjjf",
+        "description": "",
+        "category": 3,
+        "created_at": "2022-02-13T07:10:21.952Z",
+        "price": "200.00",
+        "remains": 0
     }
 },
 {

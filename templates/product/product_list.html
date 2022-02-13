@@ -1,12 +1,6 @@
 {% extends 'base.html' %} {% block content %}
     <div class="container">
         <h3>Добро пожаловать в магазин Bon Ton</h3>
-
-        <form action="{% url 'search_result' %}" method="GET">
-            <label id="q">Поиск товара по наименованию</label>
-            <input name="q" type="text" placeholder="Search ...">
-        </form>
-        <h5>Список продуктов в наличий</h5>
         <div class="row row-cols-1 align-items-start">
             {% for product in products %}
                 <div class="col py-3">
@@ -30,4 +24,12 @@
             {% endfor %}
         </div>
     </div>
+    {% if is_paginated %}
+        {% include 'common/pagination.html' %}
+    {% elif not products %}
+        <div class="col py-4" style="text-align: center; color: red">
+            <h4>Ошибка 404: по данному поиску: "{{ form.search.value }}"</h4>
+            <h4>задачи не найдены</h4>
+        </div>
+    {% endif %}
 {% endblock %}

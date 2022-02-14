@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %} {% block content %}
+    <div class="container">
+        <h3>Корзина</h3>
+        {% for basket in baskets %}
+            <table class="table table-success">
+                <thead>
+                <tr>
+                    <th scope="col">Продукт</th>
+                    <th scope="col">Стоимость</th>
+                    <th scope="col">Количество в корзине</th>
+                    <th scope="col">Добавить</th>
+                    <th scope="col">Удалить</th>
+                    <th scope="col">Общая стоимость</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ basket.product }}</td>
+                    {% load l10n %}
+                    <td>{{ basket.product.price|unlocalize }}</td>
+                    <td>{{ basket.quantity }}</td>
+                    <td>
+                        <form action="{% url 'add_to_basket' basket.product_id %}" method="post">
+                            {% csrf_token %}
+                            <input class="btn btn-dark" value="+" type="submit">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'minus_to_basket' basket.product_id %}" method="post">
+                            {% csrf_token %}
+                            <input class="btn btn-dark" value="-" type="submit">
+                        </form>
+
+                    </td>
+                    <td>{% widthratio basket.quantity 1 basket.product.price %}</td>
+                </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+
+        <h5>Итого: {{ total|unlocalize }}</h5>
+    </div>
+    </div>
+{% endblock %}

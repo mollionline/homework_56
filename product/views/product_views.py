@@ -1,9 +1,10 @@
-from django.template.defaultfilters import urlencode
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import DetailView, DeleteView, CreateView, UpdateView
-from product.models import Product
+from django.views.generic import DetailView, DeleteView, CreateView, UpdateView, ListView, TemplateView
+from product.models import Product, Basket
 from product.forms import ProductForm, SearchForm
 from product.views.helpers import SearchView
+from django.db.models import Count, Avg
 
 
 # Create your views here.
@@ -49,3 +50,49 @@ class CreateProductView(CreateView):
 
     def get_success_url(self):
         return reverse('product_detail', kwargs={'pk': self.object.pk})
+
+
+class AddProductToBasketView(TemplateView):
+    model = Basket
+
+    def post(self, request, *args, **kwargs):
+        product_pk = kwargs.get('pk')
+        product = get_object_or_404(Product, pk=product_pk)
+        if not self.model.objects.filter(product_id__in=[str(product_pk)]) and product.remains > 0:
+            Basket.objects.create(quantity=1, product_id=product_pk)
+        elif self.model.objects.filter(quantity__lt=product.remains, product_id=product_pk):
+            basket_prod = get_object_or_404(Basket, product_id=product_pk)
+            basket_prod.quantity += 1
+            basket_prod.save()
+        return redirect('/baskets/')
+
+
+class MinusProductToBasket(TemplateView):
+    model = Basket
+
+    def post(self, request, *args, **kwargs):
+        product_pk = kwargs.get('pk')
+        product = get_object_or_404(Product, pk=product_pk)
+        if self.model.objects.filter(quantity__gt=1, product_id=product_pk):
+            basket_prod = get_object_or_404(Basket, product_id=product_pk)
+            basket_prod.quantity -= 1
+            basket_prod.save()
+        elif self.model.objects.filter(quantity=1, product_id=product_pk):
+            prod = self.model.objects.filter(quantity=1, product_id=product_pk)
+            prod.delete()
+        return redirect('/baskets/')
+
+
+class ListBasketOfProductsView(ListView):
+    model = Basket
+    context_object_name = 'baskets'
+    template_name = 'basket/basket_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        total = 0
+        for tot in self.model.objects.all():
+            total += (tot.product.price * tot.quantity)
+        context['total'] = total
+        return context
+

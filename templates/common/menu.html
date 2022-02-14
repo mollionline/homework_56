@@ -25,6 +25,10 @@
                     <a class="nav-link {% if request.path == '/products/add/' %} active {% endif %}"
                        href="{% url 'product_add' %}">Добавить продукт</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/baskets/' %} active {% endif %}"
+                       href="{% url 'list_basket' %}">Корзина</a>
+                </li>
             </ul>
         </div>
         <form class="d-flex" method="get">

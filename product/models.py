@@ -19,4 +19,12 @@ class Product(models.Model):
     remains = models.IntegerField(validators=[MinValueValidator(0)], null=False, blank=False)
 
     def __str__(self):
-        return '{}. {}'.format(self.pk, self.product)
+        return '{}'.format(self.product)
+
+
+class Basket(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(validators=[MinValueValidator(0)], null=False, blank=False)
+
+    def __str__(self):
+        return '{}'.format(self.quantity)

@@ -6,7 +6,7 @@
                 <div class="col py-3">
                     <div class="card" style="border: 1px solid black;">
                         <div class="row">
-                            <div class="col-md-4 px-3">
+                            <div class="col-mt-3 px-3">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ product.product }}</h5>
                                     <p>Наименование категории: <a class="card-text btn btn-link"
@@ -18,7 +18,7 @@
                                     <a href="{% url 'product_detail' product.pk %}" class="btn btn-dark">Подробнее</a>
                                     <form action="{% url 'add_to_basket' product.pk %}" method="post">
                                         {% csrf_token %}
-                                        <input class="btn btn-dark" value="Добавить в корзину" type="submit">
+                                        <input class="btn btn-success" value="Добавить в корзину" type="submit">
                                     </form>
 
                                 </div>

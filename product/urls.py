@@ -6,7 +6,8 @@ from product.views.product_views import (ListProductView,
                                          DeleteProductView,
                                          AddProductToBasketView,
                                          ListBasketOfProductsView,
-                                         MinusProductToBasket)
+                                         MinusProductToBasket,
+                                         AddOrderView)
 
 from product.views.category_views import (category_add_view,
                                           category_view,
@@ -25,7 +26,8 @@ product_urls = [
     path('products/?<int:pk>/delete', DeleteProductView.as_view(), name='product_delete'),
     path('basket/?<int:pk>/', AddProductToBasketView.as_view(), name='add_to_basket'),
     path('basket/?<int:pk>/minus/', MinusProductToBasket.as_view(), name='minus_to_basket'),
-    path('baskets/', ListBasketOfProductsView.as_view(), name='list_basket')
+    path('baskets/', ListBasketOfProductsView.as_view(), name='list_basket'),
+    path('orders/add/', AddOrderView.as_view(), name='add_order')
 ]
 
 category_urls = [

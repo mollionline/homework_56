@@ -1,10 +1,9 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, DeleteView, CreateView, UpdateView, ListView, TemplateView
-from product.models import Product, Basket
-from product.forms import ProductForm, SearchForm
+from product.models import Product, Basket, Order, ProductOrder
+from product.forms import ProductForm, SearchForm, OrderForm
 from product.views.helpers import SearchView
-from django.db.models import Count, Avg
 
 
 # Create your views here.
@@ -58,7 +57,7 @@ class AddProductToBasketView(TemplateView):
     def post(self, request, *args, **kwargs):
         product_pk = kwargs.get('pk')
         product = get_object_or_404(Product, pk=product_pk)
-        if not self.model.objects.filter(product_id__in=[str(product_pk)]) and product.remains > 0:
+        if not self.model.objects.filter(product_id=product_pk) and product.remains > 0:
             Basket.objects.create(quantity=1, product_id=product_pk)
         elif self.model.objects.filter(quantity__lt=product.remains, product_id=product_pk):
             basket_prod = get_object_or_404(Basket, product_id=product_pk)
@@ -96,3 +95,24 @@ class ListBasketOfProductsView(ListView):
         context['total'] = total
         return context
 
+
+class AddOrderView(CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = 'basket/basket_list.html'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(data=request.POST)
+        baskets = Basket.objects.all()
+        if form.is_valid():
+            order = self.model.objects.create(
+                name=form.cleaned_data.get('name'),
+                phone=form.cleaned_data.get('phone'),
+                address=form.cleaned_data.get('address')
+            )
+            order.save()
+            for basket in Basket.objects.all():
+                ProductOrder.objects.create(qty=basket.quantity, order_id=order.pk, products_id=basket.product_id)
+            Basket.objects.all().delete()
+            return redirect('/baskets/')
+        return render(request, self.template_name, context={'form': form, 'baskets': baskets})
